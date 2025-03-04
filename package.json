@@ -5,12 +5,18 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "build": "wrangler types && astro check && astro build",
+    "preview": "astro build && wrangler pages dev ./dist",
+    "deploy": "astro check && astro build && wrangler pages deploy ./dist"
   },
   "dependencies": {
-    "astro": "^5.4.2"
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/cloudflare": "^12.2.3",
+    "@cloudflare/workers-types": "^4.20250303.0",
+    "astro": "^5.4.2",
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
+    "wrangler": "^3.112.0"
   }
 }
