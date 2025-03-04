@@ -17,6 +17,9 @@
     "typescript": "^5.8.2"
   },
   "devDependencies": {
+    "cssnano": "^7.0.6",
+    "postcss-fluid-style": "^0.8.0",
+    "postcss-lightningcss": "^1.0.1",
     "wrangler": "^3.112.0"
   }
 }
