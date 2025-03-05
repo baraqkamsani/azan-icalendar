@@ -1,16 +1,38 @@
 ---
+/** @file src/pages/index.astro */
+export const prerender = true;
+
+import css from '~/styles/index.css?inline';
+import { getEntry, render } from 'astro:content';
+const title = 'Azan iCalendar';
+const readme = await getEntry('readme', 'readme');
+// @ts-expect-error ts(2345)
+const { Content } = await render(readme);
 
 ---
 
-<html lang="en">
+<html dir=auto lang=en>
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta charset=UTF-8 />
+		<meta name=viewport content="width=device-width, initial-scale=1.0" />
+		<title set:html={title} />
+		<style is:inline set:html={css} />
+		<link rel=icon type=image/svg+xml href=/favicon.svg />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<div id=page>
+			<article class="margin-children">
+				<Content />
+			</article>
+			<footer class="margin-children">
+				<div class=flex>
+					<a href="https://github.com/baraqkamsani/azan-icalendar/blob/main/LICENSE">MIT 2025 ‧ Azan iCalendar</a>
+					<ul role=list class='flex list-none'>
+						<li><a href="https://github.com/baraqkamsani/azan-icalendar">GitHub</a></li>
+						<li><a href="https://git.sr.ht/~baraq/azan-icalendar">SourceHut</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
 	</body>
 </html>

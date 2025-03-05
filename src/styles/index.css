@@ -1,0 +1,224 @@
+@property --scrollbar {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 0px;
+}
+
+html {
+	container-type: inline-size;
+	min-width: 100%;
+	min-height: 100%;
+	font-family: -apple-system
+	           , 'BlinkMacSystemFont'
+	           , 'Segoe UI'
+	           , 'Noto Sans'
+	           , 'Helvetica'
+	           , 'Arial'
+	           , sans-serif
+	           , 'Apple Color Emoji'
+	           , 'Segoe UI Emoji'
+	;
+	overscroll-behavior: none;
+}
+
+/* noinspection CssInvalidFunction */
+body {
+	--scrollbar: calc(100dvw - 100cqw);
+	--font-size-h1: fluid-style(28px, 32px, 320px, 2560px);
+	--font-size-h2: fluid-style(24px, 28px, 320px, 2560px);
+	--font-size-h3: fluid-style(16px, 22px, 320px, 2560px);
+	--font-size-footer: fluid-style(14px, 16px, 320px, 2560px);
+	font-size: fluid-style(16px, 18px, 640px, 1240px);
+	margin: 0;
+	line-height: 1.6;
+	color: oklch(19% 8% 265);
+}
+
+#page {
+	display: flex;
+	flex-direction: column;
+	min-height: 100dvh;
+}
+
+/* -----------------------------------------------------------------------------
+** Margin
+*/
+
+article {
+	margin-block-start: 5cqmin;
+}
+
+article > *:last-child {
+	margin-block-end: max(16px, 1rem);
+}
+
+:where(.margin-children) {
+	--max-width: 1024px;
+	--min-margin: max(16px, 1rem); /* small screen */
+}
+
+.margin-children > * {
+	margin-left: max(
+		var(--min-margin),
+		50cqw - var(--max-width)/2
+	);
+
+	margin-right: max(
+		var(--min-margin),
+		50cqw - var(--max-width)/2 - var(--scrollbar)
+	);
+}
+
+/* -----------------------------------------------------------------------------
+** Utilities
+*/
+
+*, *::before, *::after { box-sizing: border-box }
+
+.visually-hidden {
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+[role='list'].list-none {
+	list-style: none;
+}
+
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/* -----------------------------------------------------------------------------
+** Content
+*/
+
+h1 {
+	font-size: var(--font-size-h1);
+	--max-width: 1032px;
+}
+
+h3 {
+	font-size: var(--font-size-h3);
+	--max-width: 1032px;
+	margin-block: 0.875em;
+}
+
+a {
+	color: oklch(34% 55% 270);
+	outline-offset: 0.5rem;
+	text-underline-offset: .15em;
+	text-decoration-skip-ink: auto;
+	text-decoration-thickness: .1em;
+}
+
+article a {
+	transition: all 50ms ease-out;
+}
+
+article a:not(:hover) {
+	text-decoration-color: oklch(34% 55% 270 / 25%);
+}
+
+article a:hover {
+	text-decoration-skip-ink: none;
+	text-underline-offset: .25em;
+	text-decoration-thickness: .2em
+}
+
+a, code {
+	overflow-wrap: anywhere;
+}
+
+ul:not([class]) {
+	margin-block: 0.75rem;
+	padding-inline-start: 1.5rem;
+}
+
+ul:not([class]) > li {
+	padding-inline-start: 0;
+}
+
+article p:first-of-type {
+	text-wrap: balance;
+}
+
+/* -----------------------------------------------------------------------------
+** README.md is used for the project's homepage, and the readme pages on GitHub.
+** Some of the information is not pertinent to non-technical users. Selectors in
+** here hide those information.
+*/
+
+h2 {
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/* -----------------------------------------------------------------------------
+** Title
+*/
+
+.title {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.875rem;
+}
+
+.title::after {
+	content: '' / '';
+	display: inline-block;
+	--size: max(32px, 2rem);
+	width: var(--size);
+	height: var(--size);
+	mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M12 23.3 8.65 20H4v-4.65L.7 12 4 8.65V4h4.65L12 .7 15.35 4H20v4.65L23.3 12 20 15.35V20h-4.65zm1.025-11.8 1.475-1.075 1.45 1.075-.575-1.7 1.475-1.075h-1.8L14.5 7l-.55 1.725h-1.825L13.6 9.8zM12 17q2.075 0 3.538-1.45T17 12q0-.2-.012-.4t-.063-.4q-.275 1.175-1.225 1.938t-2.225.762q-1.5 0-2.525-1.025T9.925 10.35q0-1.15.65-2.062T12.275 7H12Q9.9 7 8.45 8.463T7 12q0 2.1 1.45 3.55T12 17'/%3E%3C/svg%3E");
+	mask-repeat: no-repeat;
+	background-color: #06a05c;
+}
+
+.title h1 {
+	margin-block: 0.375em;
+}
+
+/* -----------------------------------------------------------------------------
+** Footer
+*/
+
+footer {
+	font-size: var(--font-size-footer);
+
+	margin-block-start: auto;
+	border-block-start: 2px solid oklch(90% 8% 270);
+	background-color: oklch(97.5% 2% 270);
+}
+
+footer a:not(:hover) {
+	text-decoration-color: transparent;
+}
+
+footer > div {
+	justify-content: space-between;
+	align-items: center;
+
+	padding: 0;
+	container-type: inline-size;
+}
+
+footer ul {
+	margin-block-start: 1em;
+	margin-block-end: 0.875em;
+}
+
+footer li:not(:last-of-type)::after {
+	content: '‧';
+	display: inline-block;
+	margin-inline: 0.375rem;
+}

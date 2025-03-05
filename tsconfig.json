@@ -1,6 +1,15 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "verbatimModuleSyntax": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "src/*",
+      ],
+    },
     "types": [
       "@cloudflare/workers-types",
     ]
