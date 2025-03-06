@@ -9,4 +9,19 @@ export default defineConfig({
 			enabled: true,
 		},
 	}),
+	integrations: [
+		(await import('@playform/compress')).default({
+			CSS: false,
+			HTML: {
+				'html-minifier-terser': {
+					quoteCharacter: `'`,
+					removeAttributeQuotes: true,
+					removeComments: false,
+				},
+			},
+			Image: false,
+			JavaScript: false,
+			SVG: false,
+		})
+	]
 });

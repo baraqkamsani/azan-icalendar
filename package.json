@@ -15,6 +15,7 @@
     "@astrojs/cloudflare": "^12.2.3",
     "@cloudflare/workers-types": "^4.20250303.0",
     "@js-temporal/polyfill": "^0.4.4",
+    "@playform/compress": "^0.1.7",
     "astro": "^5.4.2",
     "ics": "^3.8.1",
     "temporal-polyfill": "^0.2.5",
