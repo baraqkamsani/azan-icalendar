@@ -160,7 +160,7 @@ article p:first-of-type {
 	height: 2px;
 }
 
-.website-hiddens {
+.website-hidden {
 	clip-path: inset(50%);
 	height: 1px;
 	overflow: hidden;
